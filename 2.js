@@ -1,4 +1,4 @@
-async function bubbleSort(data) {
+function bubbleSort(data) {
   let swapped = false;
 
   for (let i = 0; i < data.length; i++) {
