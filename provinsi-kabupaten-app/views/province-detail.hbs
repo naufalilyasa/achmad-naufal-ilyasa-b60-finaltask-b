@@ -1,0 +1,14 @@
+{{#> layout currentPage = "provinces"}}
+
+<!-- Project Detail -->
+<article class="container project-detail-container my-5">
+  <div class="d-flex flex-column gap-3">
+    <h1 class="text-center mb-3 fs-1">Provinsi {{province.nama}}</h1>
+
+    <p class="fs-4 fw-medium">Wilayah Pulau {{province.pulau}}</p>
+    <p class="fs-5">Tanggal diresmikan: {{dateFormatter province.diresmikan}}</p>
+    <p class="fs-5">Lambang: </p>
+    <img src="/{{province.photo}}" width="300" height="300" />
+  </div>
+</article>
+{{/layout}}

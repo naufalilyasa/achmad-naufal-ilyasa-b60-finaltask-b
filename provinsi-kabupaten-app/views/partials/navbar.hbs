@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<nav class="container py-4">
+  <div class="d-flex flex-column flex-lg-row gap-3">
+    <div class="container">
+      <h3 class="text-center text-lg-start m-0">Provinsi & Kabupaten App</h3>
+    </div>
+    
+    <div class="container" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex flex-column flex-lg-row gap-3 justify-content-center justify-content-center align-items-center justify-content-lg-end align-items-lg-end">
+        <div class="d-flex flex-row gap-3">
+          <li class="nav-item nav-masthead">
+            <a class="nav-link fw-bold
+            {{#if (equal currentPage "home") }}
+            active
+            {{/if}}
+            " aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item nav-masthead">
+            <a class="nav-link fw-bold
+            {{#if (equal currentPage "provinces") }}
+            active
+            {{/if}}
+            " href="/provinces">Provinsi</a>
+          </li>
+          <li class="nav-item nav-masthead">
+            <a class="nav-link fw-bold
+            {{#if (equal currentPage "regencies") }}
+            active
+            {{/if}}
+            " href="/regencies">Kabupaten</a>
+          </li>
+        </div>
+        <div class="">
+          <li class="nav-item nav-masthead">
+            {{#if (or user userSession) }}
+            <span class="me-3">Selamat datang, {{user.username}} {{userSession.username}}</span>
+            <a href="/logout" class="btn btn-secondary px-3 py-2 me-0 me-lg-3 rounded-5" type="submit">Logout</a>
+            {{/if}}
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

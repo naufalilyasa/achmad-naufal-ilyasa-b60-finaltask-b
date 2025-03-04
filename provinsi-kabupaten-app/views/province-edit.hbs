@@ -1,0 +1,36 @@
+{{#> layout currentPage = 'provinces'}}
+
+<!-- Form Project -->
+<main class="container-fluid bg-body-dark">
+  <section class="container form-province-container">
+    <div class="d-flex flex-column">
+      <h1 class="text-center mt-3">Edit Provinsi</h1>
+      <form action="/province/{{province.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+        <div class="my-3">
+          <label for="nama" class="form-text fs-5 text-light">Nama</label>
+          <input type="text" id="nama" name="nama" class="form-control" value="{{province.nama}}" required/>
+        </div>
+
+        <div class="d-flex flex-column mb-3" id="date">
+          <label for="diresmikan" class="form-text fs-5 text-light">Tanggal Berdiri</label>
+          <input type="date" id="diresmikan" name="diresmikan" class="form-control" value="{{province.diresmikan}}" required />
+        </div>
+
+        <div class="my-3">
+          <label for="pulau" class="form-text fs-5 text-light">Wilayah Pulau</label>
+          <input type="text" id="pulau" name="pulau" class="form-control" value="{{province.pulau}}" required/>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-text fs-5 text-light">Upload Photo</label>
+          <input type="file" name="image" id="image" class="form-control" />
+        </div>
+        <div class="d-flex justify-content-end mb-3">
+          <button class="btn btn-primary justify-content-end" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{/layout}}

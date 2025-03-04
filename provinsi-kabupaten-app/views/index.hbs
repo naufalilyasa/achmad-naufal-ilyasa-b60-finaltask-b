@@ -1,0 +1,23 @@
+{{#> layout currentPage = 'home' user = user}}
+<!-- Main Section -->
+{{#if messages.success}}
+<div class="container alert-container alert alert-success mt-3" role="alert">
+  {{messages.success}} {{user.name}}
+</div>
+{{/if}}
+{{#if messages.warning}}
+<div class="container alert-container alert alert-warning mt-3" role="alert">
+  {{messages.warning}} {{user.name}}
+</div>
+{{/if}}
+
+<main class="container px-3 home-container">
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <h1 class="text-center">Provinsi & Kabupaten</h1>
+    <p class="text-center lead">Aplikasi daftar provinsi & kabupaten di Indonesia</p>
+    <p class="lead">
+      <a href="/provinces" class="btn btn-lg btn-light fw-bold border-white bg-white">Lihat Provinsi</a>
+    </p>
+  </div>
+</main>
+{{/layout}}

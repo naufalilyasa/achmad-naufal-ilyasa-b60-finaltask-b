@@ -1,0 +1,18 @@
+{{#> layout currentPage = "regencies"}}
+
+<!-- Project Detail -->
+<article class="container project-detail-container my-5">
+  <div class="d-flex flex-column gap-3">
+    {{#with regency}}
+    <h1 class="text-center mb-3 fs-1">{{nama}}</h1>
+
+    {{#with province}}
+    <p class="fs-4 fw-medium">Provinsi: {{nama}}</p>
+    {{/with}}
+    <p class="fs-5">Tanggal berdiri: {{dateFormatter diresmikan}}</p>
+    <p>Lambang:</p>
+    <img src="/{{photo}}" alt="" width="300" height="300"/>
+    {{/with}}
+  </div>
+</article>
+{{/layout}}

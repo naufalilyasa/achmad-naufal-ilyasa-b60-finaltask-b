@@ -1,0 +1,44 @@
+{{#> layout currentPage = 'regencies'}}
+
+<!-- Form Project -->
+<main class="container-fluid bg-body-dark">
+  <section class="container form-province-container">
+    <div class="d-flex flex-column">
+      <h1 class="text-center mt-3">Edit Kabupaten</h1>
+      <form action="/regency/{{regency.id}}?_method=PUT" method="post" enctype="multipart/form-data">
+        <div class="my-3">
+          <label for="nama" class="form-text fs-5 text-light">Nama</label>
+          <input type="text" id="nama" name="nama" class="form-control" value="{{regency.nama}}" required/>
+        </div>
+
+        <div class="my-3">
+          <label for="provinsi" class="form-text fs-5 text-light">Kabupaten Berada di Provinsi</label>
+          <select class="form-select" name="provinsiId" aria-label="Default select example">
+            {{#each provinces}}
+              <option value="{{this.id}}"
+              {{#if (equal this.id ../regency.provinsi_id)}}
+              selected
+              {{/if}}
+              >{{this.nama}}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="d-flex flex-column mb-3" id="date">
+          <label for="diresmikan" class="form-text fs-5 text-light">Tanggal Berdiri</label>
+          <input type="date" id="diresmikan" name="diresmikan" class="form-control" value="{{regency.diresmikan}}" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-text fs-5 text-light">Upload Photo</label>
+          <input type="file" name="image" id="image" class="form-control" />
+        </div>
+        <div class="d-flex justify-content-end mb-3">
+          <button class="btn btn-primary justify-content-end" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{/layout}}

@@ -1,0 +1,79 @@
+{{#> layout currentPage = 'provinces'}}
+<!-- Project List -->
+<section class="container">
+  <h1 class="text-start mt-3 fw-bold">Provinsi & Kabupaten</h1>
+  <div class="d-flex flex-column flex-lg-row justify-content-between mt-lg-3 mb-lg-3 mb-1">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        silahkan pilih
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/provinces">Provinsi</a></li>
+        <li><a class="dropdown-item" href="/regencies">Kabupaten</a></li>
+      </ul>
+    </div>
+    {{#if user}}
+    <div class="d-flex gap-3 mt-3 mt-lg-0 justify-content-start">
+      <a href="/province-create" class="btn btn-primary">Add Provinsi</a>
+      <a href="/regency-create" class="btn btn-primary">Add Kabupaten</a>
+    </div>
+    {{/if}}
+  </div>
+  <div class="row row-cols-1 row-cols-lg-4">
+    {{#each provinces}}
+    <div class="col">
+      <div class="card p-3 shadow gx-3 my-3 text-bg-dark border-light-subtle" id="projectList">
+        <div class="d-flex flex-column gap-2">
+          <a href="/province-detail/{{this.id}}" class="">
+            <img src="/{{this.photo}}" alt="" class="card-img-top" height="250" />
+          </a>
+          <div class="d-flex flex-column align-items-center justify-content-center">
+            <a href="/province-detail/{{this.id}}" class="card-title fs-4 text-decoration-none fs-1 fw-bold text-white">
+              {{this.nama}}
+            </a>
+            <p class="fs-6 fw-light text-body-light">{{dateFormatter this.diresmikan}}</p>
+          </div>
+          {{#if (equal ../user.id this.user_id) }}
+          <div class="d-flex flex-row gap-1">
+            <a href="/province-edit/{{this.id}}" class="btn btn-light flex-fill">edit</a>
+            <input type="hidden" id="delete{{this.id}}"  value="/province/{{this.id}}?_method=DELETE">
+            <button 
+              class="btn btn-danger flex-fill" 
+              data-bs-toggle="modal" 
+              data-bs-target="#exampleModal"
+              onclick="passingDataToModal({{this.id}})" >
+              delete
+            </button>
+          </div>
+          {{/if }}
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content bg-dark">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Project</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body f2-medium">
+                  Are you sure you want to DELETE?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <form id="formDeleteModal" action="" method="post">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-row px-1">
+        <a href="/province-detail/{{this.id}}" class="btn btn-light flex-fill">Detail</a>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+<script src="/js/modal.js"></script>
+{{/layout}}
