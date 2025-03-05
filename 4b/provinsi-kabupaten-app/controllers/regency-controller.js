@@ -89,10 +89,6 @@ async function renderEditRegencyPage(req, res) {
 
   const getProvinces = await Province.findAll();
 
-  if (user.id !== existingRegency.province.user.id) {
-    return res.redirect("/unauthorized");
-  }
-
   if (existingRegency === null) {
     res.redirect("/404-not-found");
   } else {

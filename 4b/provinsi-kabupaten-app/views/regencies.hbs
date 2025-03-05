@@ -37,21 +37,21 @@
             <p class="fs-6 fw-light text-body-light">{{dateFormatter diresmikan}}</p>
           </div>
           {{#with province}}
-            {{#with user}}
-              {{#if (equal ../../../userSession.id id) }}
+            {{!-- {{#with user}} --}}
+              {{#if ../../userSession }}
               <div class="d-flex flex-row gap-1">
-                <a href="/regency-edit/{{../../this.id}}" class="btn btn-light flex-fill">edit</a>
-                <input type="hidden" id="delete{{../../this.id}}"  value="/regency/{{../../this.id}}?_method=DELETE">
+                <a href="/regency-edit/{{../this.id}}" class="btn btn-light flex-fill">edit</a>
+                <input type="hidden" id="delete{{../this.id}}"  value="/regency/{{../this.id}}?_method=DELETE">
                 <button 
                   class="btn btn-danger flex-fill" 
                   data-bs-toggle="modal" 
                   data-bs-target="#exampleModal"
-                  onclick="passingDataToModal({{../../this.id}})" >
+                  onclick="passingDataToModal({{../this.id}})" >
                   delete
                 </button>
               </div>
               {{/if }}
-            {{/with}}
+            {{!-- {{/with}} --}}
           {{/with}}
           <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,7 +76,7 @@
         </div>
       </div>
       <div class="d-flex flex-row px-1">
-        <a href="/province-detail/{{this.id}}" class="btn btn-light flex-fill">Detail</a>
+        <a href="/regency-detail/{{this.id}}" class="btn btn-light flex-fill">Detail</a>
       </div>
     </div>
     {{/each}}
