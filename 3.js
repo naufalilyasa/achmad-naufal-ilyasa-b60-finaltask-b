@@ -1,9 +1,13 @@
 function drawImage(size) {
+  if (!(size % 2 === 1 && size >= 5)) {
+    return console.log("Ukuran harus bernilai ganjil dan diatas 4.");
+  }
+
   let halfFloor = Math.floor(size / 2);
   let halfCeil = Math.ceil(size / 2);
 
   console.log(`Pattern ${size}`);
-  let patter = "";
+
   for (let i = 1; i <= size; i++) {
     for (let j = 1; j <= size; j++) {
       if (i <= 1 && j >= 2 && j <= halfFloor) {
